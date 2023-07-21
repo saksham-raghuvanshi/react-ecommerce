@@ -1,5 +1,5 @@
 import React from "react";
-import Admin from "/asset/images/admin";
+import Admin from "../../asset/images/admin.jpg";
 
 const Testimonials = () => {
   return (
@@ -37,11 +37,7 @@ const Testimonials = () => {
             </p>
           </blockquote>
           <figcaption className="flex justify-center items-center space-x-3">
-            <img
-              className="w-9 h-9 rounded-full"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=120&q=50"
-              alt="user"
-            />
+            <img className="w-9 h-9 rounded-full" src={Admin} alt="user" />
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>Saksham Raghuvanshi</div>
               <div className="text-sm font-light text-gray-500 dark:text-gray-400">
@@ -60,11 +56,7 @@ const Testimonials = () => {
             </p>
           </blockquote>
           <figcaption className="flex justify-center items-center space-x-3">
-            <img
-              className="w-9 h-9 rounded-full"
-              src="https://instagram.fluh1-1.fna.fbcdn.net/v/t51.2885-19/327691653_5803924299721124_3660100612289096249_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fluh1-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=yMnjwmmNGpQAX9hMUvY&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBuMkUWYH9fEQEV43Oqexmaz478vxYG-F4k99rK0_yhCA&oe=64BFA577&_nc_sid=8b3546"
-              alt="user"
-            />
+            <img className="w-9 h-9 rounded-full" src={Admin} alt="user" />
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>Saksham Raghuvanshi</div>
               <div className="text-sm font-light text-gray-500 dark:text-gray-400">
@@ -83,11 +75,7 @@ const Testimonials = () => {
             </p>
           </blockquote>
           <figcaption className="flex justify-center items-center space-x-3">
-            <img
-              className="w-9 h-9 rounded-full"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=120&q=50"
-              alt="user"
-            />
+            <img className="w-9 h-9 rounded-full" src={Admin} alt="user" />
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>Saksham Raghuvanshi</div>
               <div className="text-sm font-light text-gray-500 dark:text-gray-400">
