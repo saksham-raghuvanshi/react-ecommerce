@@ -1,10 +1,12 @@
 import React from "react";
 import Hero from "./Hero";
+import FeatureProducts from "./FeatureProducts";
 
 const Home = () => {
   return (
-    <main className="dark:bg-gray-800">
+    <main>
       <Hero />
+      <FeatureProducts />
     </main>
   );
 };
