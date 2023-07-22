@@ -33,9 +33,15 @@ const Faq = () => {
       <h1 className="text-2xl text-center font-semibold dark:text-slate-100 mb-3 underline underline-offset-8">
         Question in mind?
       </h1>
-      <div>
+      <div
+        className=""
+        id="accordion-flush"
+        data-accordion="collapse"
+        data-active-classes="bg-white dark:bg-gray- text-gray-900 dark:text-white"
+        data-inactive-classes="text-gray-500 dark:text-gray-400"
+      >
         {faqs.map((faq) => (
-          <Accordion />
+          <Accordion ley={faq.id} faq={faq} />
         ))}
       </div>
     </section>
