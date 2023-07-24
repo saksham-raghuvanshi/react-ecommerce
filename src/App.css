@@ -5,3 +5,7 @@ main{
   padding: 15px;
 
 }
+
+.productslist{
+  min-height: 100vh;
+}
