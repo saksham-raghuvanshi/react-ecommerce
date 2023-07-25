@@ -37,7 +37,7 @@ const ProductsList = () => {
           <ProductCard />
         </div>
       </section>
-      {show && <FilterBar />}
+      {show && <FilterBar setShow={setShow} />}
     </main>
   );
 };
