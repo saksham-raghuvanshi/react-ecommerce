@@ -1,2 +1,2 @@
-import { Footer } from "./Layouts/Footer";
-import { Header } from "./Layouts/Header";
+export { Header } from "./Layouts/Header";
+export { Footer } from "./Layouts/Footer";
