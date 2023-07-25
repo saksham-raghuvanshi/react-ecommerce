@@ -46,7 +46,7 @@ const Footer = () => {
             <span className="sr-only">Twitter page</span>
           </Link>
           <Link
-            to="/"
+            to="https://github.com/saksham-raghuvanshi"
             className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
           >
             <svg
