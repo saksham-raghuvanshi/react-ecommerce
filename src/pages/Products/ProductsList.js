@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "../../components/Elements/ProductCard";
 import FilterBar from "./components/FilterBar";
 import { useLocation } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 
 const ProductsList = () => {
   const [show, setShow] = useState(false);
   const [products, setProducts] = useState([]);
-
+  useTitle("Explore eBooks Collection");
   const search = useLocation().search;
   const searchTerm = new URLSearchParams(search).get("q");
   // console.log(searchTerm);
