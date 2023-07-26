@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../../asset/logo.png";
 import { Link } from "react-router-dom";
+import Search from "../Section/Search";
 
 const Header = () => {
+  const [show, setshow] = useState(false);
   const [darkMode, setDarkMode] = useState(
     JSON.parse(localStorage.getItem("darkMode")) || false
   );
@@ -30,7 +32,10 @@ const Header = () => {
               onClick={() => setDarkMode(!darkMode)}
               className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-gear-wide-connected"
             ></span>
-            <span className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-search"></span>
+            <span
+              onClick={() => setshow(!show)}
+              className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-search"
+            ></span>
             <Link to="/cart" className="text-gray-700 dark:text-white mr-5">
               <span className="text-2xl bi bi-cart-fill relative">
                 <span className="text-white text-sm absolute -top-1 left-2.5 bg-rose-500 px-1 rounded-full">
@@ -42,6 +47,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
+      <Search show={show} />
     </>
   );
 };
