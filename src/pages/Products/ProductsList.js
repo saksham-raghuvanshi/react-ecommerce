@@ -3,8 +3,11 @@ import ProductCard from "../../components/Elements/ProductCard";
 import FilterBar from "./components/FilterBar";
 import { useLocation } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
+import { useFilter } from "../../Context/FilterContext";
 
 const ProductsList = () => {
+  const { productList } = useFilter();
+  console.log(productList);
   const [show, setShow] = useState(false);
   const [products, setProducts] = useState([]);
   useTitle("Explore eBooks Collection");
