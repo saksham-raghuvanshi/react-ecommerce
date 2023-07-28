@@ -28,7 +28,7 @@ const ProductsList = () => {
       initialProductList(data);
     }
     fetchProducts();
-  }, [searchTerm, initialProductList]);
+  }, [searchTerm]);
   return (
     <main className="productslist">
       <section className="my-5">
