@@ -3,7 +3,6 @@ import Logo from "../../asset/logo.png";
 import { Link } from "react-router-dom";
 import Search from "../Section/Search";
 import DropdownLoggedOut from "../Elements/DropdownLoggedOut";
-import DropdownLoggedIn from "../Elements/DropdownLoggedIn";
 
 const Header = () => {
   const [show, setshow] = useState(false);
