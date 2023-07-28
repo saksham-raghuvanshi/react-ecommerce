@@ -1,9 +1,9 @@
 export const filterReducer = (state, action) => {
-  const [type, paylod] = action;
+  const { type, payload } = action;
 
   switch (type) {
     case "PRODUCT_LIST":
-      return;
+      return { productList: payload.products };
     case "SORT_BY":
       return;
     case "RATING":

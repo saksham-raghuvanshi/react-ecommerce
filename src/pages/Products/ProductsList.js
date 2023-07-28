@@ -6,10 +6,10 @@ import useTitle from "../../Hooks/useTitle";
 import { useFilter } from "../../Context/FilterContext";
 
 const ProductsList = () => {
-  const { productList } = useFilter();
-  console.log(productList);
+  const { products, initialProductList } = useFilter();
+  console.log(products);
   const [show, setShow] = useState(false);
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   useTitle("Explore eBooks Collection");
   const search = useLocation().search;
   const searchTerm = new URLSearchParams(search).get("q");
@@ -24,10 +24,11 @@ const ProductsList = () => {
       );
       const data = await response.json();
 
-      setProducts(data);
+      // setProducts(data);
+      initialProductList(data);
     }
     fetchProducts();
-  }, [searchTerm]);
+  }, [searchTerm, initialProductList]);
   return (
     <main className="productslist">
       <section className="my-5">
