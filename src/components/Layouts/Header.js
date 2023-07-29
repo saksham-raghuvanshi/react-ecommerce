@@ -3,13 +3,14 @@ import Logo from "../../asset/logo.png";
 import { Link } from "react-router-dom";
 import Search from "../Section/Search";
 import DropdownLoggedOut from "../Elements/DropdownLoggedOut";
-
+import DropdownLoggedIn from "../Elements/DropdownLoggedIn";
 const Header = () => {
   const [show, setshow] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [darkMode, setDarkMode] = useState(
     JSON.parse(localStorage.getItem("darkMode")) || false
   );
+  const token = JSON.parse(sessionStorage.getItem("token"));
 
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
@@ -49,7 +50,8 @@ const Header = () => {
               onClick={() => setDropdown(!dropdown)}
               className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-person-circle"
             >
-              {dropdown && <DropdownLoggedOut />}
+              {dropdown &&
+                (token ? <DropdownLoggedIn /> : <DropdownLoggedOut />)}
             </span>
           </div>
         </div>
