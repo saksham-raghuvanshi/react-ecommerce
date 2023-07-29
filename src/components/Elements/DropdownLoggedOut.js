@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const DropdownLoggedOut = () => {
+const DropdownLoggedOut = ({ setDropdown }) => {
   return (
     <div
       id=""
@@ -10,6 +10,7 @@ const DropdownLoggedOut = () => {
       <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
         <li>
           <Link
+            onClick={() => setDropdown(false)}
             to="/products"
             className="py-2 block px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white dark:text-white  "
           >
@@ -18,6 +19,7 @@ const DropdownLoggedOut = () => {
         </li>
         <li>
           <Link
+            onClick={() => setDropdown(false)}
             to="/login"
             className="py-2 block px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white dark:text-white "
           >
@@ -26,6 +28,7 @@ const DropdownLoggedOut = () => {
         </li>
         <li>
           <Link
+            onClick={() => setDropdown(false)}
             to="register"
             className="py-2 block px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white dark:text-white "
           >

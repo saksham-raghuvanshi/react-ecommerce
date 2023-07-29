@@ -51,7 +51,11 @@ const Header = () => {
               className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-person-circle"
             >
               {dropdown &&
-                (token ? <DropdownLoggedIn /> : <DropdownLoggedOut />)}
+                (token ? (
+                  <DropdownLoggedIn setDropdown={setDropdown} />
+                ) : (
+                  <DropdownLoggedOut setDropdown={setDropdown} />
+                ))}
             </span>
           </div>
         </div>
