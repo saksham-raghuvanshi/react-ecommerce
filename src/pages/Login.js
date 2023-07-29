@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const email = useRef();
+  const password = useRef();
+  async function handleLogin(ev) {
+    ev.preventDefault();
+
+    const authDetail = {
+      email: email.current.value,
+      password: password.current.value,
+    };
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "content-Type": "application/json" },
+      body: JSON.stringify(authDetail),
+    };
+
+    const response = await fetch("http://localhost:8000/login", requestOptions);
+
+    const data = await response.json();
+    data.accessToken ? navigate("/products") : toast.error(data);
+  }
   return (
     <main>
       <section>
@@ -8,7 +32,7 @@ const Login = () => {
           Login
         </p>
       </section>
-      <form>
+      <form onSubmit={handleLogin}>
         <div className="mb-6">
           <label
             htmlFor="email"
@@ -17,6 +41,7 @@ const Login = () => {
             YourEmail
           </label>
           <input
+            ref={email}
             id="email"
             placeholder="Enter Your Email"
             type="email"
@@ -33,6 +58,7 @@ const Login = () => {
             Password
           </label>
           <input
+            ref={password}
             id="password"
             placeholder="Enter Your Password"
             type="password"
