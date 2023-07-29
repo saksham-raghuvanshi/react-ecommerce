@@ -41,7 +41,7 @@ const Faq = () => {
         data-inactive-classes="text-gray-500 dark:text-gray-400"
       >
         {faqs.map((faq) => (
-          <Accordion ley={faq.id} faq={faq} />
+          <Accordion key={faq.id} faq={faq} />
         ))}
       </div>
     </section>

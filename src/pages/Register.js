@@ -1,6 +1,26 @@
 import React from "react";
 
 const Register = () => {
+  async function handleRegister(ev) {
+    ev.preventDefault();
+    const authDetail = {
+      name: ev.target.name.value,
+      email: ev.target.email.value,
+      password: ev.target.password.value,
+    };
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "content-Type": "application/json" },
+      body: JSON.stringify(authDetail),
+    };
+    const response = await fetch(
+      "http://localhost:8000/register",
+      requestOptions
+    );
+    const data = await response.json();
+    console.log(data);
+  }
   return (
     <main>
       <section>
@@ -8,7 +28,7 @@ const Register = () => {
           Register
         </p>
       </section>
-      <form>
+      <form onSubmit={handleRegister}>
         <div className="mb-6">
           <label
             htmlFor="name"
