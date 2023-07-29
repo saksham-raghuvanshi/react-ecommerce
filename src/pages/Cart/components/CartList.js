@@ -1,7 +1,11 @@
 import React from "react";
 
 const CartList = () => {
-  return <div></div>;
+  return (
+    <>
+      <section></section>
+    </>
+  );
 };
 
 export default CartList;

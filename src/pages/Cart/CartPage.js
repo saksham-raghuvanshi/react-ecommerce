@@ -1,6 +1,7 @@
 import React from "react";
 import CartList from "./components/CartList";
 import CartEmpty from "./components/CartEmpty";
+import CartCard from "./components/CartCard";
 
 const CartPage = () => {
   const cardListLength = 0;
