@@ -6,6 +6,7 @@ import ProductsDetails from "../pages/ProductsDetails";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import CartPage from "../pages/Cart/CartPage";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 const AllRoutes = () => {
   return (
@@ -16,7 +17,14 @@ const AllRoutes = () => {
         <Route path="/products/:id" element={<ProductsDetails />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="cart" element={<CartPage />} />
+        <Route
+          path="cart"
+          element={
+            <ProtectedRoutes>
+              <CartPage />
+            </ProtectedRoutes>
+          }
+        />
       </Routes>
     </>
   );

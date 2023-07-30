@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -74,9 +74,18 @@ const Login = () => {
         </div>
         <button className="border px-5 py-2.5 bg-blue-700 text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ">
           {" "}
-          Submit
+          Login
         </button>
       </form>
+      <div className="my-4 text-slate-700 dark:text-slate-100 text-xl">
+        Create new Account :{" "}
+        <Link
+          className="text-blue-700 hover:text-blue-900 hover:underline hover:underline-offset-8"
+          to="/register"
+        >
+          Register
+        </Link>
+      </div>
     </main>
   );
 };

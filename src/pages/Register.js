@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Register = () => {
@@ -92,6 +92,16 @@ const Register = () => {
           Register
         </button>
       </form>
+
+      <div className="my-4 text-slate-700 dark:text-slate-100 text-xl">
+        Already Have Account :{" "}
+        <Link
+          className="text-blue-700 hover:text-blue-900 hover:underline hover:underline-offset-8"
+          to="/login"
+        >
+          Login
+        </Link>
+      </div>
     </main>
   );
 };
