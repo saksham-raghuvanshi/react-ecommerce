@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import CartPage from "../pages/Cart/CartPage";
 import ProtectedRoutes from "./ProtectedRoutes";
+import OrderPage from "../pages/Order/OrderPage";
 
 const AllRoutes = () => {
   return (
@@ -22,6 +23,14 @@ const AllRoutes = () => {
           element={
             <ProtectedRoutes>
               <CartPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="order-summary"
+          element={
+            <ProtectedRoutes>
+              <OrderPage />
             </ProtectedRoutes>
           }
         />

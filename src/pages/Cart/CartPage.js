@@ -4,6 +4,7 @@ import CartEmpty from "./components/CartEmpty";
 
 import useTitle from "../../Hooks/useTitle";
 import { useCart } from "../../Context/CartContext";
+import OrderFail from "../Order/components/OrderFail";
 
 const CartPage = () => {
   const { cartList } = useCart();
