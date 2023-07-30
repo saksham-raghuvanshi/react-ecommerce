@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "../../../Context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = ({ setCheckout }) => {
-  const { total } = useCart();
+  const { cartList, total, clearCart } = useCart();
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  const cbid = JSON.parse(sessionStorage.getItem("cbid"));
   useEffect(() => {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-    const cbid = JSON.parse(sessionStorage.getItem("cbid"));
     async function getUser() {
       const response = await fetch(`http://localhost:8000/600/users/${cbid}`, {
         method: "GET",
@@ -21,6 +23,38 @@ const Checkout = ({ setCheckout }) => {
     }
     getUser();
   });
+
+  async function handleOrderSubmit(ev) {
+    ev.preventDefault();
+
+    try {
+      const order = {
+        cartList: cartList,
+        amount_paid: total,
+        quantity: cartList.length,
+        user: {
+          name: user.name,
+          email: user.email,
+          id: user.id,
+        },
+      };
+
+      const response = await fetch("http://localhost:8000/660/orders", {
+        method: "POSt",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(order),
+      });
+
+      const data = await response.json();
+      clearCart();
+      navigate("/order-summary", { state: { data: data, status: true } });
+    } catch {
+      navigate("/order-summary", { state: { status: false } });
+    }
+  }
 
   return (
     <section>
@@ -55,7 +89,7 @@ const Checkout = ({ setCheckout }) => {
                 <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                   <i className="bi bi-credit-card mr-2"></i>CARD PAYMENT
                 </h3>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleOrderSubmit}>
                   <div>
                     <label
                       htmlFor="name"
