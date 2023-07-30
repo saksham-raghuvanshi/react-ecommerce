@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const DropdownLoggedIn = ({ setDropdown }) => {
@@ -9,10 +9,30 @@ const DropdownLoggedIn = ({ setDropdown }) => {
     navigate("/");
     setDropdown(false);
   };
+
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    const token = JSON.parse(sessionStorage.getItem("token"));
+    const cbid = JSON.parse(sessionStorage.getItem("cbid"));
+    async function getUser() {
+      const response = await fetch(`http://localhost:8000/600/users/${cbid}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      setUser(data);
+    }
+    getUser();
+  });
+
   return (
     <div className="select-none absolute top-11 right-0 z-10 w-44 bg-white rounder divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
       <div className="py-3 px-4 text-sm text-gray-900 dark:text-white">
-        <div className="font-medium truncate">Name</div>
+        <div className="font-medium truncate">{user.name || ""}</div>
       </div>
       <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
         <li>
