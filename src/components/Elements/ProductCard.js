@@ -53,14 +53,20 @@ const ProductCard = ({ product }) => {
           {incart ? (
             <button
               onClick={() => removeFromCart(product)}
-              className="inline-flex items-center py-2 px-3 text-sm font-medium text-center bg-red-700 text-white rounded  hover:bg-red-900"
+              className={`inline-flex items-center py-2 px-3 text-sm font-medium text-center bg-red-700 text-white rounded  hover:bg-red-900 ${
+                product.in_stock ? "" : "cursor-not-allowed"
+              }`}
+              disabled={product.in_stock ? "" : "disabled"}
             >
               Remove item<i className="ml-1 bi bi-trash3"></i>
             </button>
           ) : (
             <button
               onClick={() => addToCart(product)}
-              className="inline-flex items-center py-2 px-3 text-sm font-medium text-center bg-blue-700 text-white rounded  hover:bg-blue-900"
+              className={`inline-flex items-center py-2 px-3 text-sm font-medium text-center bg-blue-700 text-white rounded  hover:bg-blue-900 ${
+                product.in_stock ? "" : "cursor-not-allowed"
+              }`}
+              disabled={product.in_stock ? "" : "disabled"}
             >
               Add to Cart <i className="text-2xl font-medium bi-plus"></i>
             </button>
