@@ -1,12 +1,14 @@
 import React from "react";
 import CartList from "./components/CartList";
 import CartEmpty from "./components/CartEmpty";
-import CartCard from "./components/CartCard";
+
 import useTitle from "../../Hooks/useTitle";
+import { useCart } from "../../Context/CartContext";
 
 const CartPage = () => {
+  const { cartList } = useCart();
   useTitle("Cart - FrontendGyaan");
-  const cardListLength = 1;
+  const cardListLength = cartList.length;
   return <main>{cardListLength ? <CartList /> : <CartEmpty />}</main>;
 };
 

@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
+import { useCart } from "../../Context/CartContext";
 
 const ProductCard = ({ product }) => {
+  const { addToCart, removeFromCart, cartList } = useCart();
+  const [incart, setInCart] = useState(false);
   const { id, name, price, rating, overview, poster, best_seller } = product;
+
+  useEffect(() => {
+    const productInCart = cartList.find((item) => item.id === product.id);
+    if (productInCart) {
+      setInCart(true);
+    } else {
+      setInCart(false);
+    }
+  }, [cartList, product.id]);
   return (
     <div className=" m-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
       <Link to={`/products/${id}`} className="relative">
@@ -37,9 +49,22 @@ const ProductCard = ({ product }) => {
             <span>₹</span>
             <span>{price}</span>
           </span>
-          <button className="inline-flex items-center py-2 px-3 text-sm font-medium text-center bg-blue-700 text-white rounded  hover:bg-blue-900">
-            Add to Cart <i className="text-2xl font-medium bi-plus"></i>
-          </button>
+
+          {incart ? (
+            <button
+              onClick={() => removeFromCart(product)}
+              className="inline-flex items-center py-2 px-3 text-sm font-medium text-center bg-red-700 text-white rounded  hover:bg-red-900"
+            >
+              Remove item<i className="ml-1 bi bi-trash3"></i>
+            </button>
+          ) : (
+            <button
+              onClick={() => addToCart(product)}
+              className="inline-flex items-center py-2 px-3 text-sm font-medium text-center bg-blue-700 text-white rounded  hover:bg-blue-900"
+            >
+              Add to Cart <i className="text-2xl font-medium bi-plus"></i>
+            </button>
+          )}
         </p>
       </div>
     </div>

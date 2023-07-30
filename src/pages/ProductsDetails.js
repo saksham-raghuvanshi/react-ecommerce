@@ -2,10 +2,23 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Rating from "../components/Elements/Rating";
 import useTitle from "../Hooks/useTitle";
+import { useCart } from "../Context/CartContext";
 
 const ProductsDetails = () => {
   const { id } = useParams();
+  const { addToCart, removeFromCart, cartList } = useCart();
+  const [incart, setInCart] = useState(false);
   const [product, setproduct] = useState([]);
+
+  useEffect(() => {
+    const productInCart = cartList.find((item) => item.id === product.id);
+    if (productInCart) {
+      setInCart(true);
+    } else {
+      setInCart(false);
+    }
+  }, [cartList, product.id]);
+
   useTitle(product.name);
   useEffect(() => {
     async function fetchProduct() {
@@ -60,9 +73,22 @@ const ProductsDetails = () => {
               </span>
             </p>
             <p className="my-3">
-              <button className="inline-flex items-center py-2 px-5 text-lg font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800">
-                Add to Cart<i className="ml-1 bi bi-plus-lg"></i>
-              </button>
+              {!incart && (
+                <button
+                  onClick={() => addToCart(product)}
+                  className="inline-flex items-center py-2 px-5 text-lg font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
+                >
+                  Add to Cart<i className="ml-1 bi bi-plus-lg"></i>
+                </button>
+              )}
+              {incart && (
+                <button
+                  onClick={() => removeFromCart(product)}
+                  className="inline-flex items-center py-2 px-5 text-lg font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800"
+                >
+                  Remove item<i className="ml-1 bi bi-trash3"></i>
+                </button>
+              )}
             </p>
             <p className="text-lg text-gray-900 dark:text-slate-200">
               {product.long_description}
