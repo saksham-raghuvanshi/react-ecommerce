@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../../../Context/CartContext";
 import CartCard from "./CartCard";
+import Checkout from "./Checkout";
 
 const CartList = () => {
+  const [checkout, setCheckout] = useState(false);
+
   const { cartList, total } = useCart();
   return (
     <>
@@ -25,6 +28,7 @@ const CartList = () => {
         </div>
         <div className="text-right my-5">
           <button
+            onClick={() => setCheckout(true)}
             type="button"
             className="bg-blue-700 text-white px-4 py-2.5 rounded-lg hover:bg-blue-900 focus-"
           >
@@ -32,6 +36,7 @@ const CartList = () => {
           </button>
         </div>
       </section>
+      {checkout && <Checkout setCheckout={setCheckout} />}
     </>
   );
 };
