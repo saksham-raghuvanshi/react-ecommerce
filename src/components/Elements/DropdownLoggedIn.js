@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Login from "../../pages/Login";
 
 const DropdownLoggedIn = ({ setDropdown }) => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("cbid");
+    Login();
     navigate("/");
     setDropdown(false);
   };

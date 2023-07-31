@@ -295,6 +295,12 @@
       "password": "$2a$10$CZHeLh6x5yzSX5.raV0u4OzwjDYfJ9djOqQk71BQAXFmwz9E7vYua",
       "name": "Saksham Raghuvanshi",
       "id": 1
+    },
+    {
+      "email": "saksham@gmail.com",
+      "password": "$2a$10$zWNuyv8k7nWaUGJAtQM2Xe5yk9zK33eggltqSCHHGM7CoTXg/phOS",
+      "name": "Saksham",
+      "id": 2
     }
   ]
 }
