@@ -28,7 +28,7 @@ const DashboardCard = ({ order }) => {
                 </p>
               </Link>
               <div className="text-lg m-2 dark:text-slate-200">
-                <span>${product.price}</span>
+                <span>₹{product.price}</span>
               </div>
             </div>
           </div>

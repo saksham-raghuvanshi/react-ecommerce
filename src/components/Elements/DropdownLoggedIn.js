@@ -1,34 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Login from "../../pages/Login";
+import { getUser } from "../../services/dataServices";
+import { Logout } from "../../services/authService";
 
 const DropdownLoggedIn = ({ setDropdown }) => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    Login();
+    Logout();
     navigate("/");
     setDropdown(false);
   };
 
   const [user, setUser] = useState({});
   useEffect(() => {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-    const cbid = JSON.parse(sessionStorage.getItem("cbid"));
-    async function getUser() {
-      const response = await fetch(`http://localhost:8000/600/users/${cbid}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const data = await response.json();
-      setUser(data);
+    async function fetchdata() {
+      const data = await getUser();
+      data.email ? setUser(data) : handleLogout();
     }
-    getUser();
+    fetchdata();
   });
-
   return (
     <div className="select-none absolute top-11 right-0 z-10 w-44 bg-white rounder divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
       <div className="py-3 px-4 text-sm text-gray-900 dark:text-white">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DashboardCard from "./Components/DashboardCard";
 import DashboardEmpty from "./Components/DashboardEmpty";
 import useTitle from "../../Hooks/useTitle";
+import { getUserOrders } from "../../services/dataServices";
 
 const Dashboard = () => {
   useTitle("Dashboard");
@@ -11,17 +12,7 @@ const Dashboard = () => {
   const token = JSON.parse(sessionStorage.getItem("token"));
   useEffect(() => {
     async function fetchOrder() {
-      const response = await fetch(
-        `http://localhost:8000/660/orders?user.id=${cbid}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const data = await response.json();
+      const data = await getUserOrders();
       setOrders(data);
     }
     fetchOrder();

@@ -4,6 +4,7 @@ import FilterBar from "./components/FilterBar";
 import { useLocation } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
 import { useFilter } from "../../Context/FilterContext";
+import { getProductList } from "../../services/productServices";
 
 const ProductsList = () => {
   const { products, initialProductList } = useFilter();
@@ -17,13 +18,7 @@ const ProductsList = () => {
 
   useEffect(() => {
     async function fetchProducts() {
-      const response = await fetch(
-        `http://localhost:8000/products?name_like=${
-          searchTerm ? searchTerm : ""
-        }`
-      );
-      const data = await response.json();
-
+      const data = await getProductList(searchTerm);
       // setProducts(data);
       initialProductList(data);
     }
