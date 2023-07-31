@@ -7,6 +7,7 @@ import DropdownLoggedIn from "../Elements/DropdownLoggedIn";
 import { useCart } from "../../Context/CartContext";
 const Header = () => {
   const { cartList } = useCart();
+
   const [show, setshow] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [darkMode, setDarkMode] = useState(

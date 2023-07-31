@@ -10,6 +10,8 @@ const Checkout = ({ setCheckout }) => {
   const cbid = JSON.parse(sessionStorage.getItem("cbid"));
   useEffect(() => {
     async function getUser() {
+      const cbid = JSON.parse(sessionStorage.getItem("cbid"));
+
       const response = await fetch(`http://localhost:8000/600/users/${cbid}`, {
         method: "GET",
         headers: {
@@ -22,7 +24,7 @@ const Checkout = ({ setCheckout }) => {
       setUser(data);
     }
     getUser();
-  });
+  }, [cbid, token]);
 
   async function handleOrderSubmit(ev) {
     ev.preventDefault();

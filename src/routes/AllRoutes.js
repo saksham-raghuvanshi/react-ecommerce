@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import CartPage from "../pages/Cart/CartPage";
 import ProtectedRoutes from "./ProtectedRoutes";
 import OrderPage from "../pages/Order/OrderPage";
+import Dashboard from "../pages/Dashboard.js/Dashboard";
 
 const AllRoutes = () => {
   return (
@@ -31,6 +32,14 @@ const AllRoutes = () => {
           element={
             <ProtectedRoutes>
               <OrderPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="dashboard"
+          element={
+            <ProtectedRoutes>
+              <Dashboard />
             </ProtectedRoutes>
           }
         />
