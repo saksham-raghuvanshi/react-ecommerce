@@ -9,6 +9,7 @@ import CartPage from "../pages/Cart/CartPage";
 import ProtectedRoutes from "./ProtectedRoutes";
 import OrderPage from "../pages/Order/OrderPage";
 import Dashboard from "../pages/Dashboard.js/Dashboard";
+import PageNotFound from "../pages/PageNotFound";
 
 const AllRoutes = () => {
   return (
@@ -43,6 +44,7 @@ const AllRoutes = () => {
             </ProtectedRoutes>
           }
         />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );
