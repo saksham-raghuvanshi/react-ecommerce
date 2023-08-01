@@ -3,6 +3,7 @@ import DashboardCard from "./Components/DashboardCard";
 import DashboardEmpty from "./Components/DashboardEmpty";
 import useTitle from "../../Hooks/useTitle";
 import { getUserOrders } from "../../services/dataServices";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   useTitle("Dashboard");
@@ -12,8 +13,12 @@ const Dashboard = () => {
   const token = JSON.parse(sessionStorage.getItem("token"));
   useEffect(() => {
     async function fetchOrder() {
-      const data = await getUserOrders();
-      setOrders(data);
+      try {
+        const data = await getUserOrders();
+        setOrders(data);
+      } catch (error) {
+        toast.error(error.message);
+      }
     }
     fetchOrder();
   }, [cbid, token]);

@@ -4,6 +4,7 @@ import Rating from "../components/Elements/Rating";
 import useTitle from "../Hooks/useTitle";
 import { useCart } from "../Context/CartContext";
 import { getProduct } from "../services/productServices";
+import { toast } from "react-toastify";
 
 const ProductsDetails = () => {
   const { id } = useParams();
@@ -23,8 +24,12 @@ const ProductsDetails = () => {
   useTitle(product.name);
   useEffect(() => {
     async function fetchProduct() {
-      const data = await getProduct(id);
-      setproduct(data);
+      try {
+        const data = await getProduct(id);
+        setproduct(data);
+      } catch (error) {
+        toast.error(error.message);
+      }
     }
     fetchProduct();
   }, [id]);

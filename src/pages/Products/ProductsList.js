@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
 import { useFilter } from "../../Context/FilterContext";
 import { getProductList } from "../../services/productServices";
-
+import { toast } from "react-toastify";
 const ProductsList = () => {
   const { products, initialProductList } = useFilter();
   console.log(products);
@@ -18,12 +18,16 @@ const ProductsList = () => {
 
   useEffect(() => {
     async function fetchProducts() {
-      const data = await getProductList(searchTerm);
-      // setProducts(data);
-      initialProductList(data);
+      try {
+        const data = await getProductList(searchTerm);
+        // setProducts(data);
+        initialProductList(data);
+      } catch (error) {
+        toast.error(error.message);
+      }
     }
     fetchProducts();
-  }, [searchTerm]);
+  }, [searchTerm, initialProductList]);
   return (
     <main className="productslist">
       <section className="my-5">

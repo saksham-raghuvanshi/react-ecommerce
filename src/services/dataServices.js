@@ -18,6 +18,10 @@ export async function getUser() {
     `http://localhost:8000/600/users/${session.id}`,
     responseOption
   );
+  if (!response.ok) {
+    // eslint-disable-next-line no-throw-literal
+    throw { message: response.statusText, status: response.status };
+  }
 
   const data = await response.json();
   return data;
@@ -35,6 +39,10 @@ export async function getUserOrders() {
       },
     }
   );
+  if (!response.ok) {
+    // eslint-disable-next-line no-throw-literal
+    throw { message: response.statusText, status: response.status };
+  }
   const data = await response.json();
   return data;
 }
@@ -60,6 +68,10 @@ export async function CreateOrder(cartList, total, user) {
     },
     body: JSON.stringify(order),
   });
+  if (!response.ok) {
+    // eslint-disable-next-line no-throw-literal
+    throw { message: response.statusText, status: response.status };
+  }
 
   const data = await response.json();
 
