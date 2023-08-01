@@ -15,7 +15,7 @@ export async function getUser() {
     },
   };
   const response = await fetch(
-    `http://localhost:8000/600/users/${session.id}`,
+    `${process.env.REACT_APP_HOST}/600/users/${session.id}`,
     responseOption
   );
   if (!response.ok) {
@@ -30,7 +30,7 @@ export async function getUser() {
 export async function getUserOrders() {
   const session = getSession();
   const response = await fetch(
-    `http://localhost:8000/660/orders?user.id=${session.id}`,
+    `${process.env.REACT_APP_HOST}/660/orders?user.id=${session.id}`,
     {
       method: "GET",
       headers: {
@@ -60,7 +60,7 @@ export async function CreateOrder(cartList, total, user) {
     },
   };
 
-  const response = await fetch("http://localhost:8000/660/orders", {
+  const response = await fetch(`${process.env.REACT_APP_HOST}/660/orders`, {
     method: "POSt",
     headers: {
       "Content-Type": "application/json",
